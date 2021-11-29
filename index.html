@@ -11,29 +11,35 @@
 
 
     </style>
+    <script>
+       function setCookie(cname, cvalue) {
+       document.cookie = cname + "=" + cvalue + ";";
+        }
+        
+    </script>
 </head>
 
 <body>
-    <div class="container-fluid">
-        <form >
+    <div class="container-fluid" novalidate>
+        <form action = "results.html"novalidate>
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Name</label>
-                        <input type="text" class="form-control" id="lastName" maxlength="40"  placeholder="Last" required>
+                        <label for="lastName">Name</label>
+                        <input type="text" name = "lastName" class="form-control" id="lastName" maxlength="40"  placeholder="Last" required>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="exampleFormControlInput1"></label>
-                        <input type="text" class="form-control" id="firstName" maxlength="40" placeholder="First" required>
+                        <label for="firstName"></label>
+                        <input type="text" name = "firstName" class="form-control" id="firstName" maxlength="40" placeholder="First" required>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <label for="multiChoiceSelect">Preferred Title</label>
-                    <select class="form-control" id="multiChoiceSelect" required>
+                    <label for="title">Preferred Title</label>
+                    <select class="form-control" name = "title"id="title" required>
                         <option>None</option>
                         <option>Student</option>
                         <option>Professor</option>
@@ -45,10 +51,10 @@
                     <label for="userHeight">Height</label>
                     <div class="row">
                         <div class="col">
-                            <input type="number" class="form-control" placeholder="Feet" aria-label="feet" required>
+                            <input type="number" name = "heightFeet" id = "heightFeet" class="form-control" placeholder="Feet" aria-label="feet" required>
                         </div>
                         <div class="col">
-                            <input type="number" class="form-control" placeholder="Inches" aria-label="inches" required>
+                            <input type="number"  name = "heightInches"  id = "heightInches" class="form-control" placeholder="Inches" aria-label="inches" required>
                         </div>
                     </div>
 
@@ -57,15 +63,15 @@
             <div class="row">
                 <div class="col-6">
                     <label for="userPhone">Phone Number</label>
-                    <input type="text" class="form-control" id="userPhone" maxlength="10" minlength="10" placeholder="(123) 423-2413" required>
+                    <input type="text" class="form-control" name="phone" id="phone" maxlength="10" minlength="10" placeholder="(123) 423-2413" required>
                 </div>
                 <div class="col">
                     <label for="userPhone">City</label>
-                    <input type="text" class="form-control" id="userPhone" placeholder="San Francisco" required>
+                    <input type="text" class="form-control" name="city"  id="city" placeholder="San Francisco" required>
                 </div>
                 <div class="col">
-                    <label for="multiChoiceSelect">City</label>
-                    <select class="form-control" id="multiChoiceSelect" required>
+                    <label for="state">State</label>
+                    <select class="form-control" id="state" name="state" required>
                         <option selected disabled value="">Choose...</option>
                         <option>Alabama</option>
                         <option>Alaska</option>
@@ -105,7 +111,7 @@
                         <option>Oklahoma</option>
                         <option>Oregon</option>
                         <option>Pennsylvania
-                        <option> Rhode Island</option>
+                        <option>Rhode Island</option>
                         <option>South Carolina</option>
                         <option>South Dakota</option>
                         <option>Tennessee</option>
@@ -119,13 +125,10 @@
                         <option>Wyoming</option>
                         </option>
                     </select>
-                    <div class="invalid-feedback">
-                        Please select a valid state.
-                    </div>
                 </div>
                 <div class="col">
                     <label for="userZip">Zip</label>
-                    <input type="text" class="form-control" id="userZip" maxlength="5" minlength="5" placeholder="12345" required>
+                    <input type="text" class="form-control" name = "userZip" id="userZip" maxlength="5" minlength="5" placeholder="12345" required>
                 </div>
             </div>
 
@@ -134,23 +137,23 @@
             </div>
             <div class="form-group form-check form-switch">
                 <label class="form-check-label" for="exampleCheck1">Email</label>
-                <input type="checkbox" class="form-check-input" id="captcha">
+                <input type="checkbox" class="form-check-input" id="emailService" name = "emailService">
             </div>
             <div class="form-group form-check form-switch">
                 <label class="form-check-label" for="exampleCheck1">Phone</label>
-                <input type="checkbox" class="form-check-input" id="captcha">
+                <input type="checkbox" class="form-check-input"  id="phoneService" name = "phoneService">
             </div>
             <div class="form-group form-check form-switch">
                 <label class="form-check-label" for="exampleCheck1">FaceBook</label>
-                <input type="checkbox" class="form-check-input" id="captcha">
+                <input type="checkbox" class="form-check-input"  id="fbService" name = "fbService">
             </div>
             <div class="form-group form-check form-switch">
                 <label class="form-check-label" for="exampleCheck1">Twitter</label>
-                <input type="checkbox" class="form-check-input" id="captcha">
+                <input type="checkbox" class="form-check-input"  id="twitterService" name = "twitterService">
             </div>
             <div class="form-group form-check form-switch">
                 <label class="form-check-label" for="exampleCheck1">Surface Mail</label>
-                <input type="checkbox" class="form-check-input" id="captcha">
+                <input type="checkbox" class="form-check-input" id="emailService" name = "emailService">
             </div>
             <div class="form-group form-check form-switch">
                 <input type="checkbox" class="form-check-input" id="captcha">
@@ -173,7 +176,13 @@
                 <label class="form-check-label">Agree to </label>
                 <a href="url">Terms and Conditions</a>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <script>
+                   setCookie(lastName,lastName)
+                </script>
+            </div>
+            
         </form>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

@@ -18,3 +18,14 @@
         }, false)
       })
   })()
+
+
+
+
+  let User = {
+    firstName: '',
+    lastName: '',
+    title:'',
+
+
+  }
