@@ -15,30 +15,30 @@
 </head>
 
 <body>
-    <div >
-        <h2 class = "title">
-        CSC 642 848 Fall 2021 Individual Assignment - Joshua Boelman 
+    <div>
+        <h2 class="title">
+            CSC 642 848 Fall 2021 Individual Assignment - Joshua Boelman
         </h2>
-        <h3 class = "subtitle">
-         Data Survey Form
+        <h3 class="subtitle">
+            Data Survey Form
         </h3>
 
     </div>
-    <div class="container-fluid" novalidate>
-        <form name="inputForm" action="results.html" novalidate>
+    <div class="container-fluid" >
+        <form name="inputForm" action="results.html"  onsubmit="return checkform(this);">
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="lastName">Name</label>
+                        <label for="lastName">Last Name</label>
                         <input type="text" name="lastName" class="form-control" id="lastName" maxlength="40"
-                            placeholder="Last" required>
+                            placeholder="Doe" required>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="firstName"></label>
+                        <label for="firstName">First Name</label>
                         <input type="text" name="firstName" class="form-control" id="firstName" maxlength="40"
-                            placeholder="First" required>
+                            placeholder="John" required>
                     </div>
                 </div>
             </div>
@@ -148,35 +148,35 @@
                         placeholder="12345" required>
                 </div>
             </div>
-<div> 
-            <div class="form-group">
-                <label for="userHeight">Check all services you require</label>
+            <div>
+                <div class="form-group">
+                    <label for="userHeight">Check all services you require</label>
+                </div>
+                <div class="form-group form-check form-switch">
+                    <label class="form-check-label" for="exampleCheck1">Email</label>
+                    <input type="checkbox" class="form-check-input" id="emailService" name="emailService">
+                </div>
+                <div class="form-group form-check form-switch">
+                    <label class="form-check-label" for="exampleCheck1">Phone</label>
+                    <input type="checkbox" class="form-check-input" id="phoneService" name="phoneService">
+                </div>
+                <div class="form-group form-check form-switch">
+                    <label class="form-check-label" for="exampleCheck1">FaceBook</label>
+                    <input type="checkbox" class="form-check-input" id="fbService" name="fbService">
+                </div>
+                <div class="form-group form-check form-switch">
+                    <label class="form-check-label" for="exampleCheck1">Twitter</label>
+                    <input type="checkbox" class="form-check-input" id="twitterService" name="twitterService">
+                </div>
+                <div class="form-group form-check form-switch">
+                    <label class="form-check-label" for="exampleCheck1">Surface Mail</label>
+                    <input type="checkbox" class="form-check-input" id="surfaceService" name="surfaceService">
+                </div>
+                <div class="form-group form-check form-switch">
+                    <label class="form-check-label" for="exampleCheck1">Personal Visit</label>
+                    <input type="checkbox" class="form-check-input" id="personalVisit" name="personalVisit">
+                </div>
             </div>
-            <div class="form-group form-check form-switch">
-                <label class="form-check-label" for="exampleCheck1">Email</label>
-                <input type="checkbox" class="form-check-input" id="emailService" name="emailService">
-            </div>
-            <div class="form-group form-check form-switch">
-                <label class="form-check-label" for="exampleCheck1">Phone</label>
-                <input type="checkbox" class="form-check-input" id="phoneService" name="phoneService">
-            </div>
-            <div class="form-group form-check form-switch">
-                <label class="form-check-label" for="exampleCheck1">FaceBook</label>
-                <input type="checkbox" class="form-check-input" id="fbService" name="fbService">
-            </div>
-            <div class="form-group form-check form-switch">
-                <label class="form-check-label" for="exampleCheck1">Twitter</label>
-                <input type="checkbox" class="form-check-input" id="twitterService" name="twitterService">
-            </div>
-            <div class="form-group form-check form-switch">
-                <label class="form-check-label" for="exampleCheck1">Surface Mail</label>
-                <input type="checkbox" class="form-check-input" id="surfaceService" name="surfaceService">
-            </div>
-            <div class="form-group form-check form-switch">
-                <label class="form-check-label" for="exampleCheck1">Personal Visit</label>
-                <input type="checkbox" class="form-check-input" id="personalVisit" name="personalVisit">
-            </div>
-        </div>
             <div class="form-group">
                 <label for="multiChoiceSelect">Monthly Budget</label>
                 <select class="form-control" id="budget" name="budget">
@@ -188,15 +188,25 @@
             <div class="form-group">
                 <label for="emailAddress">Email address</label>
                 <input type="email" class="form-control" id="emailAddress" name="emailAddress"
-                    placeholder="name@example.com" required>
+                    placeholder="username@domain.com" required>
             </div>
-            <div class="form-group form-check" >
+            <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="check" required>
                 <label class="form-check-label">Agree to </label>
                 <a href="url">Terms and Conditions</a>
             </div>
+            <!-- START CAPTCHA -->
+            <div class="capbox">
+                <div id="CaptchaDiv"></div>
+                <div class="capbox-inner">
+                    Type the number:<br>
+                    <input type="hidden" id="txtCaptcha">
+                    <input type="text" name="CaptchaInput" id="CaptchaInput" size="15"><br>
+                </div>
+            </div>
+            <br>
             <div style="text-align:center;">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" >Submit</button>
             </div>
 
         </form>
@@ -206,6 +216,55 @@
     </div>
     </div>
 </body>
+
+<script type="text/javascript">
+
+    // Captcha Script
+    
+    function checkform(theform){
+    var why = "";
+    
+    if(theform.CaptchaInput.value == ""){
+    why += "- Please Enter CAPTCHA Code.\n";
+    }
+    if(theform.CaptchaInput.value != ""){
+    if(ValidCaptcha(theform.CaptchaInput.value) == false){
+    why += "- The CAPTCHA Code Does Not Match.\n";
+    }
+    }
+    if(why != ""){
+    alert(why);
+    return false;
+    }
+    }
+    
+    var a = Math.ceil(Math.random() * 9)+ '';
+    var b = Math.ceil(Math.random() * 9)+ '';
+    var c = Math.ceil(Math.random() * 9)+ '';
+    var d = Math.ceil(Math.random() * 9)+ '';
+    var e = Math.ceil(Math.random() * 9)+ '';
+    
+    var code = a + b + c + d + e;
+    document.getElementById("txtCaptcha").value = code;
+    document.getElementById("CaptchaDiv").innerHTML = code;
+    
+    // Validate input against the generated number
+    function ValidCaptcha(){
+    var str1 = removeSpaces(document.getElementById('txtCaptcha').value);
+    var str2 = removeSpaces(document.getElementById('CaptchaInput').value);
+    if (str1 == str2){
+    return true;
+    }else{
+    return false;
+    }
+    }
+    
+    // Remove the spaces from the entered and generated code
+    function removeSpaces(string){
+    return string.split(' ').join('');
+    }
+    </script>
+    
 
 
 

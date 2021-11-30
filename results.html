@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <script src="index.js"></script>
+
 <script>
     function getCookies() {
         const queryString = window.location.search;
@@ -8,46 +9,165 @@
         document.getElementById("lastName").textContent = urlParams.get('lastName')
         document.getElementById("firstName").textContent = urlParams.get('firstName')
         document.getElementById("title").textContent = urlParams.get('title')
-        document.getElementById("heightFeet").textContent = urlParams.get('heightFeet')
-        document.getElementById("heightInches").textContent = urlParams.get('heightInches')
+        document.getElementById("heightFeet").textContent = urlParams.get('heightFeet') + "'" + urlParams.get('heightInches')
         document.getElementById("phone").textContent = urlParams.get('phone')
         document.getElementById("city").textContent = urlParams.get('city')
         document.getElementById("state").textContent = urlParams.get('state')
         document.getElementById("userZip").textContent = urlParams.get('userZip')
         document.getElementById("address").textContent = urlParams.get('address')
-        document.getElementById("emailService").textContent = "emailService = " + urlParams.get('emailService')
-        document.getElementById("phoneService").textContent = "phoneService = " + urlParams.get('phoneService')
-        document.getElementById("fbService").textContent = "fbService = " + urlParams.get('fbService') 
-        document.getElementById("twitterService").textContent = "twitterService = " + urlParams.get('twitterService')
-        document.getElementById("surfaceService").textContent = "surfaceService = " + urlParams.get('surfaceService')
-        document.getElementById("personalVisit").textContent ="personalVisit = " +  urlParams.get('personalVisit')
+
+
+      
+        
+        document.getElementById("twitterService").textContent = "Twitter = " + urlParams.get('twitterService')
+        document.getElementById("surfaceService").textContent = "Surface = " + urlParams.get('surfaceService')
+        document.getElementById("personalVisit").textContent = "Personal Visit = " + urlParams.get('personalVisit')
+
+        if(urlParams.get('emailService') == null){
+            document.getElementById("emailService").textContent = "No Email"
+        } else {
+            document.getElementById("emailService").textContent = "Email"
+        }
+
+        if(urlParams.get('phoneService') == null){
+            document.getElementById("phoneService").textContent = "No Phone"
+        } else {
+            document.getElementById("phoneService").textContent = "Phone"
+        }
+
+        if(urlParams.get('fbService') == null){
+            document.getElementById("fbService").textContent = "No Facebook"
+        } else {
+            document.getElementById("fbService").textContent = "Facebook"
+        }
+        if(urlParams.get('twitterService') == null){
+            document.getElementById("twitterService").textContent = "No Twitter"
+        } else {
+            document.getElementById("twitterService").textContent = "Twitter Activated"
+        }
+        if(urlParams.get('surfaceService') == null){
+            document.getElementById("surfaceService").textContent = "No Surface"
+        } else {
+            document.getElementById("surfaceService").textContent = "Surface"
+        }
+        if(urlParams.get('personalVisit') == null){
+            document.getElementById("personalVisit").textContent = "No Personal Visits"
+        } else {
+            document.getElementById("personalVisit").textContent = "Personal Visits"
+        }
+        
         document.getElementById("emailAddress").textContent = urlParams.get('emailAddress')
+        document.getElementById("budget").textContent = urlParams.get('budget')
+        var location =urlParams.get('address') + "," + urlParams.get('city')
+        const googleAPIString = "https://www.google.com/maps/embed/v1/place?key=AIzaSyBveBaqZKBS-A71oyZjP_h5i1Dm5T3BEyw&q=" + location
+        document.getElementById("iframe").setAttribute("src", googleAPIString);
+       
     }
 </script>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial=scale=1.0">
+    <link rel="stylesheet" href="mystyle.css">
+    
 </head>
 
 <body onload="getCookies()">
-    <p id="lastName"></p>
-    <p id="firstName"></p>
-    <p id="title"></p>
-    <p id="heightFeet"></p>
-    <p id="heightInches"></p>
-    <p id="phone"></p>
-    <p id="city"></p>
-    <p id="state"></p>
-    <p id="userZip"></p>
-    <p id="address"></p>
-    <p id="emailService"></p>
-    <p id="phoneService"></p>
-    <p id="fbService"></p>
-    <p id="twitterService"></p>
-    <p id="surfaceService"></p>
-    <p id="personalVisit"></p>
-    <p id="emailAddress"></p>
+    <div>
+        <h2 class = "subtitle">
+        Results Verification Page - Joshua Boelman 
+        </h2>
+        <h3 class = "subtitle">
+        Form Submitted, Thank you!
+        </h3>
+    </div>
+    <div class="container-fluid">
+        
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Last Name: </td>
+                <td id="lastName"></td>
+            </tr>
+            <tr>
+                <td>First Name: </td>
+                <td id="firstName"></td>
+            </tr>
+            <tr>
+                <td>Preferred Title: </td>
+                <td id="title"></td>
+            </tr>
+            <tr>
+                <td>Height: </td>
+                <td id="heightFeet"></td>
+            </tr>
+            <tr>
+                <td>Phone Number: </td>
+                <td id="phone"></td>
+            </tr>
+            <tr>
+                <td>City: </td>
+                <td id="city"></td>
+            </tr>
+            <tr>
+                <td>State: </td>
+                <td id="state"></td>
+            </tr>
+            <tr>
+                <td>Zip Code: </td>
+                <td id="userZip"></td>
+            </tr>
+            <tr>
+                <td>Address: </td>
+                <td id="address"></td>
+            </tr>
+            <tr>
+                <td>Email: </td>
+                <td id="emailAddress"></td>
+            </tr>
+            <tr>
+                <td>Services Activated: </td>
+                <td id="emailService"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td id="phoneService"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td id="fbService"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td id="twitterService"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td id="surfaceService"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td id="personalVisit"></td>
+            </tr>
+            <tr>
+                <td>Budget Range Chosen:</td>
+                <td id="budget"></td>
+            </tr>
+        </table>
+        <iframe id = "iframe"
+        width="600"
+        height="450"
+        style="border:0"
+        loading="lazy"
+        allowfullscreen
+        >
+      </iframe>
+    </div>
 
-    
+
 </body>
 
 </html>
