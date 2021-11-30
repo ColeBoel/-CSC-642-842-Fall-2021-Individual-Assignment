@@ -1,0 +1,19 @@
+.container-fluid{
+    background-color: #ddd;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px grey;
+    margin : auto;
+    width: fit-content;
+    padding: 20px
+    
+}
+
+
+.title{
+    text-align: center;
+
+    
+}
+.subtitle{
+    text-align: center;
+}
