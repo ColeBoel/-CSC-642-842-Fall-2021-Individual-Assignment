@@ -5,7 +5,6 @@
     function getCookies() {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
-
         document.getElementById("lastName").textContent = urlParams.get('lastName')
         document.getElementById("firstName").textContent = urlParams.get('firstName')
         document.getElementById("title").textContent = urlParams.get('title')
@@ -15,6 +14,14 @@
         document.getElementById("city").textContent = urlParams.get('city')
         document.getElementById("state").textContent = urlParams.get('state')
         document.getElementById("userZip").textContent = urlParams.get('userZip')
+        document.getElementById("address").textContent = urlParams.get('address')
+        document.getElementById("emailService").textContent = "emailService = " + urlParams.get('emailService')
+        document.getElementById("phoneService").textContent = "phoneService = " + urlParams.get('phoneService')
+        document.getElementById("fbService").textContent = "fbService = " + urlParams.get('fbService') 
+        document.getElementById("twitterService").textContent = "twitterService = " + urlParams.get('twitterService')
+        document.getElementById("surfaceService").textContent = "surfaceService = " + urlParams.get('surfaceService')
+        document.getElementById("personalVisit").textContent ="personalVisit = " +  urlParams.get('personalVisit')
+        document.getElementById("emailAddress").textContent = urlParams.get('emailAddress')
     }
 </script>
 
@@ -31,8 +38,14 @@
     <p id="city"></p>
     <p id="state"></p>
     <p id="userZip"></p>
-    <p id="firstName"></p>
-
+    <p id="address"></p>
+    <p id="emailService"></p>
+    <p id="phoneService"></p>
+    <p id="fbService"></p>
+    <p id="twitterService"></p>
+    <p id="surfaceService"></p>
+    <p id="personalVisit"></p>
+    <p id="emailAddress"></p>
 </body>
 
 </html>
