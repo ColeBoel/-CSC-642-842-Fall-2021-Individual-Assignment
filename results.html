@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html>
 <script src="index.js"></script>
+<script>
+    function getCookies() {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        document.getElementById("lastName").textContent = urlParams.get('lastName')
+        document.getElementById("firstName").textContent = urlParams.get('firstName')
+        document.getElementById("title").textContent = urlParams.get('title')
+        document.getElementById("heightFeet").textContent = urlParams.get('heightFeet')
+        document.getElementById("heightInches").textContent = urlParams.get('heightInches')
+        document.getElementById("phone").textContent = urlParams.get('phone')
+        document.getElementById("city").textContent = urlParams.get('city')
+        document.getElementById("state").textContent = urlParams.get('state')
+        document.getElementById("userZip").textContent = urlParams.get('userZip')
+    }
+</script>
 
 <head>
 </head>
 
-<body>
-    <p>You have <span id="lastName"></span> dollars</p>
-
-    <script>
-        document.getElementById('lastName').textContent = getCookie('lastName');
-    </script>
+<body onload="getCookies()">
+    <p id="lastName"></p>
+    <p id="firstName"></p>
+    <p id="title"></p>
+    <p id="heightFeet"></p>
+    <p id="heightInches"></p>
+    <p id="phone"></p>
+    <p id="city"></p>
+    <p id="state"></p>
+    <p id="userZip"></p>
+    <p id="firstName"></p>
 
 </body>
 
